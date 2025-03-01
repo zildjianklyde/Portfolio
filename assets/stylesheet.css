@@ -1,8 +1,9 @@
 :root {
-    --primary-color: #a29bfe;
+    --primary-color:  #40407a;
     --dark-color: #2c3e50;
-    --light-color: #7f8c8d;
-    --font-folor: #ffff;
+    --light-color: #dfe6e9;
+    --font-folor: #a29bfe;
+    --logo-color: #3e007b;
     --hover-transition: all 0.3s ease;
 }
 
@@ -26,7 +27,7 @@ body {
 }
 
 .navbar {
-    background: #3c6382;
+    background: #706f9e;
     backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
@@ -47,7 +48,7 @@ body {
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--logo-color);
     text-decoration: none;
 }
 
@@ -64,7 +65,7 @@ body {
 
 .hero {
     padding: 8rem 0 4rem;
-    background: linear-gradient(45deg, #9AECDB,#f7f1e3);
+    background: linear-gradient(45deg, #a29bfe,#f7f1e3);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -77,6 +78,9 @@ body {
 
 .highlight {
     color: var(--primary-color);
+}
+.h1--hi{
+    color: var(--font-folor);
 }
 
 .cta-btn {
@@ -145,7 +149,8 @@ body {
 
 .contact {
     padding: 4rem 0;
-    background: var(--light-color);
+    background: var(--dark-color);
+    
 }
 
 .contact-form {
@@ -161,6 +166,9 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+.h2--contacts{
+    color: var(--light-color);
+}
 
 .social-links {
     position: fixed;
@@ -171,7 +179,7 @@ body {
 }
 
 .social-links a {
-    color: var(--dark-color);
+    color: var(--light-color);
     font-size: 1.5rem;
     transition: var(--hover-transition);
 }
