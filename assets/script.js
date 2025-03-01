@@ -39,3 +39,27 @@ window.onscroll = function() {
   }
   prevScrollpos = currentScrollPos;
 }
+
+function openLightbox(imageSrc) {
+    document.getElementById('lightboxModal').style.display = "block";
+    document.getElementById('lightboxImage').src = imageSrc;
+}
+
+function closeLightbox() {
+    document.getElementById('lightboxModal').style.display = "none";
+}
+
+// Close when clicking outside
+window.onclick = function(event) {
+    const lightbox = document.getElementById('lightboxModal');
+    if (event.target === lightbox) {
+        closeLightbox();
+    }
+}
+
+// Close with ESC key
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        closeLightbox();
+    }
+});
