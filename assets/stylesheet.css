@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #44bd32;
+    --primary-color: #a29bfe;
     --dark-color: #2c3e50;
     --light-color: #7f8c8d;
     --font-folor: #ffff;
@@ -263,7 +263,7 @@ body {
 
 .hobbies {
     padding: 4rem 0;
-    background: #f8f9fa;
+    background: #dfe6e9;
 }
 
 .gallery-grid {
