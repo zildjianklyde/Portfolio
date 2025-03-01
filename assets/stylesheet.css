@@ -92,7 +92,7 @@ body {
 
 .cta-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+    box-shadow: 0 5px 15px #6c5ce7;
 }
 
 .projects {
