@@ -197,19 +197,22 @@ body {
 .profile-image {
     flex: 1;
     max-width: 400px;
+    position: relative;
 }
 
 .profile-image img {
-    width: 20vw;
-    height: 40vh;
-    border-radius:50%;
+    width: 300px;
+    height: 300px; 
+    border-radius: 50%;
     border: 5px solid var(--primary-color);
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     transition: var(--hover-transition);
+    object-fit: cover; 
 }
 
 .profile-image img:hover {
     transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
 }
 
 .hero-content {
@@ -220,16 +223,47 @@ body {
     .hero-container {
         flex-direction: column;
         text-align: center;
+        padding-top: 2rem;
     }
     
     .profile-image {
         max-width: 100%;
-        height: auto;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .profile-image img {
+        width: 200px; /* Smaller size for mobile */
+        height: 200px; /* Keep square aspect ratio */
     }
     
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .cta-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-image img {
+        width: 180px;
+        height: 180px;
+        border-width: 4px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.75rem;
+    }
+    
+    .hero-content {
+        padding: 0 1rem;
     }
 }
 
