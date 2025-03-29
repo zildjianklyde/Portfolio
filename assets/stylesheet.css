@@ -268,40 +268,49 @@ body {
 }
 
 
-.lightbox {
-    display: none;
+/* Lightbox modal container */
+.lightbox-overlay {
     position: fixed;
-    z-index: 9999;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-.lightbox-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 800px;
-    animation: zoom 0.3s;
+/* The large image inside the lightbox */
+.lightbox-image {
+    max-width: 90%;
+    max-height: 80%;
+    object-fit: contain; /* Ensures the image maintains aspect ratio */
+    animation: zoom 0.3s ease-in-out; /* Adds smooth zoom animation */
 }
 
-@keyframes zoom {
-    from {transform: scale(0.8)}
-    to {transform: scale(1)}
-}
-
-.close {
+/* Close button for the lightbox */
+.lightbox-close {
     position: absolute;
     top: 20px;
-    right: 30px;
+    right: 20px;
+    font-size: 2rem;
     color: white;
-    font-size: 40px;
-    font-weight: bold;
     cursor: pointer;
+    z-index: 1010;
 }
+
+/* Zoom animation when opening the image */
+@keyframes zoom {
+    from {
+        transform: scale(0.8);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
 
 .hobbies {
     padding: 4rem 0;
@@ -312,8 +321,9 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
-    padding: 2rem 0;
+    padding: 2rem;
 }
+
 
 .gallery-item {
     position: relative;
@@ -329,7 +339,7 @@ body {
 
 .gallery-item img {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
+    height: auto; 
+    object-fit: cover; 
     transition: transform 0.3s ease;
 }

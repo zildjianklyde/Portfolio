@@ -29,6 +29,7 @@ function scrollToSection(sectionId) {
     });
 }
 
+// Navbar hide/show on scroll
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
   var currentScrollPos = window.pageYOffset;
@@ -40,16 +41,26 @@ window.onscroll = function() {
   prevScrollpos = currentScrollPos;
 }
 
-function openLightbox(imageSrc) {
-    document.getElementById('lightboxModal').style.display = "block";
-    document.getElementById('lightboxImage').src = imageSrc;
+function openLightbox(imageSrc, srcset = "") {
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+    
+    // Set the image source and optional srcset for responsive images
+    lightboxImage.src = imageSrc;
+    if (srcset) {
+        lightboxImage.srcset = srcset;
+    }
+
+    // Show the modal
+    lightboxModal.style.display = "flex"; // Use flexbox to center the image
 }
 
 function closeLightbox() {
-    document.getElementById('lightboxModal').style.display = "none";
+    const lightboxModal = document.getElementById('lightboxModal');
+    lightboxModal.style.display = "none"; // Hide the modal when closed
 }
 
-// Close when clicking outside
+// Close lightbox when clicking outside of the image
 window.onclick = function(event) {
     const lightbox = document.getElementById('lightboxModal');
     if (event.target === lightbox) {
@@ -57,7 +68,7 @@ window.onclick = function(event) {
     }
 }
 
-// Close with ESC key
+// Close the lightbox with ESC key
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         closeLightbox();
