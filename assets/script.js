@@ -60,6 +60,12 @@ function closeLightbox() {
     lightboxModal.style.display = "none"; // Hide the modal when closed
 }
 
+document.querySelector('.hamburger').addEventListener('click', function () {
+    document.querySelector('.navbar').classList.toggle('open');
+});
+
+
+
 // Close lightbox when clicking outside of the image
 window.onclick = function(event) {
     const lightbox = document.getElementById('lightboxModal');

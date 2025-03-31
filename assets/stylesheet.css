@@ -52,6 +52,11 @@ body {
     text-decoration: none;
 }
 
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
 .nav-links a {
     text-decoration: none;
     color: var(--light-color);
@@ -62,6 +67,56 @@ body {
 .nav-links a:hover {
     color: var(--dark-color);
 }
+/* Hamburger styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--light-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar .container {
+        padding: 0.5rem 1rem;
+        flex-direction: row; /* Change this back to row so that everything aligns horizontally */
+        justify-content: space-between; /* Space out the logo and the hamburger */
+        align-items: center; /* Center the items vertically */
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 1rem;
+        display: none; /* Initially hide the nav links */
+    }
+
+    .nav-links a {
+        margin-left: 1rem;
+        font-size: 1rem;
+    }
+
+    /* Center the hamburger on mobile */
+    .hamburger {
+        display: block;
+        order: 2; /* Make sure it stays in a good position relative to the logo */
+    }
+}
+
+/* Show nav links when hamburger is clicked */
+@media (max-width: 768px) {
+    .navbar.open .nav-links {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+}
+
+
 
 .hero {
     padding: 8rem 0 4rem;
@@ -339,7 +394,7 @@ body {
 
 .gallery-item img {
     width: 100%;
-    height: auto; 
+    height: 300px;
     object-fit: cover; 
     transition: transform 0.3s ease;
 }
