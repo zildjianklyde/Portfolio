@@ -80,3 +80,20 @@ document.addEventListener('keydown', (event) => {
         closeLightbox();
     }
 });
+function updateProjectImages() {
+    const projectImages = document.querySelectorAll(".project-img");
+
+    projectImages.forEach(img => {
+        if (window.innerWidth <= 767) {
+            img.src = img.getAttribute("data-mobile"); // Use mobile image
+        } else {
+            img.src = img.getAttribute("data-desktop"); // Use desktop image
+        }
+    });
+}
+
+// Run on page load
+updateProjectImages();
+
+// Run on window resize
+window.addEventListener("resize", updateProjectImages);
