@@ -9,91 +9,138 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Contact form submission
-document.getElementById('contactForm').addEventListener('submit', function(e) {
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
     e.preventDefault();
-    // Add your form submission logic here
     alert('Thank you for your message! I will get back to you soon.');
     this.reset();
 });
 
-// Project details modal (you can expand this)
-function showProjectDetails(projectId) {
-    // Add modal logic here
-    alert(`Showing details for ${projectId}`);
-}
-
-// Scroll to section function
-function scrollToSection(sectionId) {
-    document.getElementById(sectionId).scrollIntoView({
-        behavior: 'smooth'
+function openLightbox(source) {
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+  
+    let src, srcset, alt;
+    if (typeof source === 'string') {
+      src    = source;
+      srcset = '';
+      alt    = '';
+    } else {
+      src    = source.dataset.full || source.src;
+      srcset = source.srcset;
+      alt    = source.alt;
+    }
+  
+    lightboxImage.src    = src;
+    lightboxImage.srcset = srcset;
+    lightboxImage.alt    = alt;
+    lightboxModal.style.display = 'flex';
+  }
+  
+  // Close the lightbox
+  function closeLightbox() {
+    document.getElementById('lightboxModal').style.display = 'none';
+  }
+  
+  // ---- Bind thumbnail clicks ----
+  function bindGalleryThumbnails(selector) {
+    document.querySelectorAll(selector).forEach(img => {
+      // find the wrapping gallery-item container (optional)
+      img.closest(selector.replace(' img','')).addEventListener('click', e => {
+        e.preventDefault();
+        openLightbox(img);
+      });
+    });
+  }
+  
+  // Once DOM is ready, wire everything up
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1) Thumbnails in gallery 1
+    bindGalleryThumbnails('.gallery-item img');
+  
+    // 2) Thumbnails in gallery 2
+    bindGalleryThumbnails('.gallery-item-2 img');
+  
+    // 3) Close button (the ✕)
+    const closeBtn = document.querySelector('.lightbox-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeLightbox);
+    }
+  
+    // 4) Click outside the image (on the overlay)
+    const lightboxModal = document.getElementById('lightboxModal');
+    lightboxModal.addEventListener('click', e => {
+      // if the clicked element _is_ the overlay container itself, close
+      if (e.target === lightboxModal) {
+        closeLightbox();
+      }
+    });
+  
+    // 5) Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  });
+// Responsive image handling
+function updateProjectImages() {
+    const projectImages = document.querySelectorAll(".project-img");
+    projectImages.forEach(img => {
+        img.src = window.innerWidth <= 767 
+            ? img.dataset.mobile 
+            : img.dataset.desktop;
     });
 }
 
-// Navbar hide/show on scroll
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-  var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("navbar").style.top = "0";
-  } else {
-    document.getElementById("navbar").style.top = "-50px";
-  }
-  prevScrollpos = currentScrollPos;
-}
-
-function openLightbox(imageSrc, srcset = "") {
-    const lightboxModal = document.getElementById('lightboxModal');
-    const lightboxImage = document.getElementById('lightboxImage');
+// Gallery expansion toggle
+function toggleGallery() {
+    const galleryGrid = document.querySelector('.gallery-grid');
+    const showMoreBtn = document.querySelector('.show-more-btn');
     
-    // Set the image source and optional srcset for responsive images
-    lightboxImage.src = imageSrc;
-    if (srcset) {
-        lightboxImage.srcset = srcset;
+    galleryGrid.classList.toggle('expanded');
+    showMoreBtn.textContent = galleryGrid.classList.contains('expanded') 
+        ? 'Show Less' 
+        : 'Show More';
+}
+
+// Initialize responsive images
+window.addEventListener("DOMContentLoaded", updateProjectImages);
+window.addEventListener("resize", updateProjectImages);
+
+// Navbar scroll behavior
+let prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+    const currentScrollPos = window.pageYOffset;
+    const navbar = document.querySelector('.navbar');
+    
+    if (prevScrollpos > currentScrollPos) {
+        navbar.style.top = "0";
+    } else {
+        navbar.style.top = "-50px";
     }
-
-    // Show the modal
-    lightboxModal.style.display = "flex"; // Use flexbox to center the image
+    prevScrollpos = currentScrollPos;
 }
 
-function closeLightbox() {
-    const lightboxModal = document.getElementById('lightboxModal');
-    lightboxModal.style.display = "none"; // Hide the modal when closed
-}
-
-document.querySelector('.hamburger').addEventListener('click', function () {
+// Mobile menu toggle (if you have hamburger menu)
+document.querySelector('.hamburger')?.addEventListener('click', function() {
     document.querySelector('.navbar').classList.toggle('open');
 });
 
+const breadcrumb = document.getElementById('breadcrumbTop');
+const SHOW_THRESHOLD = 300;
 
-
-// Close lightbox when clicking outside of the image
-window.onclick = function(event) {
-    const lightbox = document.getElementById('lightboxModal');
-    if (event.target === lightbox) {
-        closeLightbox();
-    }
-}
-
-// Close the lightbox with ESC key
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-        closeLightbox();
-    }
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > SHOW_THRESHOLD) {
+    breadcrumb.classList.add('breadcrumb--visible');
+    breadcrumb.classList.remove('breadcrumb--hidden');
+  } else {
+    breadcrumb.classList.add('breadcrumb--hidden');
+    breadcrumb.classList.remove('breadcrumb--visible');
+  }
 });
-function updateProjectImages() {
-    const projectImages = document.querySelectorAll(".project-img");
 
-    projectImages.forEach(img => {
-        if (window.innerWidth <= 767) {
-            img.src = img.getAttribute("data-mobile"); // Use mobile image
-        } else {
-            img.src = img.getAttribute("data-desktop"); // Use desktop image
-        }
-    });
-}
-
-// Run on page load
-updateProjectImages();
-
-// Run on window resize
-window.addEventListener("resize", updateProjectImages);
+breadcrumb.querySelector('a').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  

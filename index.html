@@ -19,23 +19,31 @@
                 <a href="#projects">Projects</a>
                 <a href="#hobbies">Hobbies</a>
                 <a href="#contact">Contact</a>
-
+                <nav id="breadcrumbTop" class="breadcrumb breadcrumb--hidden" aria-label="Scroll back to top">
+                 
+                  </nav>
             </div>
         </div>
     </nav>
 
     <section id="home" class="hero">
         <div class="container hero-container">
-            <div class="profile-image"  onclick="openLightbox('assets/profile.jpg')">
-                <img src="assets/profile.jpg" alt="Zildjian Klyde"
-                srcset="assets/profile-small.jpg 500w, assets/profile-small.jpg 1000w, assets/profile.jpg 2000w"
+            <div class="profile-image"  onclick="openLightbox('assets/profile2.jpg')">
+                <img src="assets/profile2.png" alt="Zildjian Klyde"
+                srcset="assets/profile-small1.png 500w, assets/profile-small1.png 1000w, assets/profile2.jpg 2000w"
                 sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
             </div>
             
             <div class="hero-content">
                 <h1 class="h1--hi">Hi, I'm <span class="highlight">Zildjian Klyde!</span></h1>
-                <p>This is my portfolio and these are some of my Hobbies</p>
+                <p>This portfolio is a glimpse into how I channel my creativity <br>through cosplay.
+                 When I'm not coding or debugging, I’m crafting<br> costumes, accessories, and 
+                 props—then heading to conventions<br> to connect with the community.</p>
+                </p>
+                
                 <button class="cta-btn" onclick="scrollToSection('projects')">View My Work</button>
+                <button class="cta-btn" onclick="scrollToSection('hobbies')">View My hobbies</button>
+
             </div>
         </div>
     </section>
@@ -45,8 +53,8 @@
             <h2>Projects</h2>
             <div class="projects-grid">
     
-                <div class="project-card" onclick="openLightbox('assets/Project1.png')">
-                    <img src="assets/Project1.png" data-desktop="assets/Project1.png" data-mobile="assets/project1-landscape.png" class="project-img" alt="Project 1">
+                <div class="project-card" onclick="openLightbox('assets/Project1-onclick.png')">
+                    <img src="assets/Project1.png" data-desktop="assets/Project1.png" data-mobile="assets/project1-landscape.png" class="project-img" alt="Project 1" loading="lazy">
                     <div class="project-info">
                         <h3>E-Commerce School Project</h3>
                         <p>HTML, CSS, JS</p>
@@ -54,8 +62,8 @@
                     </div>
                 </div>
     
-                <div class="project-card" onclick="openLightbox('assets/Project2.png')">
-                    <img src="assets/Project2.png" data-desktop="assets/Project2.png" data-mobile="assets/project2-landscape.png" class="project-img" alt="Project 2">
+                <div class="project-card" onclick="openLightbox('assets/Project2-onclick.png')">
+                    <img src="assets/Project2.png" data-desktop="assets/Project2.png" data-mobile="assets/project2-landscape.png" class="project-img" alt="Project 2" loading="lazy">
                     <div class="project-info">
                         <h3>School Projects</h3>
                         <p>HTML, CSS, Javascript</p>
@@ -78,13 +86,19 @@
                 <h2>Cosplay Hobbies</h2>
                 <div class="gallery-grid">
             
-                    <div class="gallery-item" onclick="openLightbox('assets/cosplay1.jpg')">
+                    <div class="gallery-item">
                         <img 
-                            src="assets/cosplay1.jpg" 
+                            src="assets/cosplay1-small.jpg" 
+                            data-full="assets/cosplay1.jpg"
+                            srcset="assets/cosplay1-small.jpg 500w, 
+                                    assets/cosplay1-medium.jpg 1000w, 
+                                    assets/cosplay1.jpg 2000w"
+                            sizes="(max-width: 600px) 100vw, 
+                                  (max-width: 1024px) 50vw, 
+                                  33vw"
                             alt="Cosplay 1"
-                            srcset="assets/cosplay1-small.jpg 500w, assets/cosplay1-small.jpg 1000w, assets/cosplay1.jpg 2000w"
-                            sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
-                    </div>       
+                            loading="lazy">
+                    </div>     
                     <div class="gallery-item" onclick="openLightbox('assets/cosplay2.jpg')">
                         <img 
                             src="assets/cosplay2.jpg" 
@@ -104,7 +118,8 @@
                             src="assets/cosplay23.jpg" 
                             alt="Cosplay 23"
                             srcset="assets/cosplay23-small.jpg 500w, assets/cosplay23-small.jpg 1000w, assets/cosplay23.jpg 2000w"
-                            sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                            sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('assets/cosplay5.jpg')">
                         <img 
@@ -113,7 +128,8 @@
                             srcset="assets/cosplay5-small.jpg 500w, assets/cosplay5-small.jpg 1000w, assets/cosplay5.jpg 2000w"
                             sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
                     </div>
-                    <div class="gallery-item" onclick="openLightbox('assets/cosplay6.jpg')">
+                    <div class="gallery-item" onclick="openLightbox('assets/cosplay6.jpg')"
+                    loading="lazy">
                         <img 
                             src="assets/cosplay6.jpg" 
                             alt="Cosplay 6"
@@ -123,75 +139,98 @@
                     <div class="gallery-item" onclick="openLightbox('assets/cosplay7.jpg')">
                         <img src="assets/cosplay7.jpg" alt="Cosplay 7"
                         srcset="assets/cosplay7-small.jpg 500w, assets/cosplay7-small.jpg 1000w, assets/cosplay7.jpg 2000w"
-                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('assets/cosplay8.jpg')">
                         <img src="assets/cosplay8.jpg" alt="Cosplay 8"
                         srcset="assets/cosplay8-small.jpg 500w, assets/cosplay8-small.jpg 1000w, assets/cosplay8.jpg 2000w"
-                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy">
                     </div>
+                    <button class="show-more-btn" onclick="toggleGallery()">Show More</button>
+
                     <div class="gallery-item" onclick="openLightbox('assets/cosplay9.jpg')">
                         <img src="assets/cosplay9.jpg" alt="Cosplay 9"
                         srcset="assets/cosplay9-small.jpg 500w, assets/cosplay9-small.jpg 1000w, assets/cosplay9.jpg 2000w"
-                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('assets/cosplay16.jpg')">
                         <img src="assets/cosplay16.jpg" alt="Cosplay 16"
                         srcset="assets/cosplay16-small.jpg 500w, assets/cosplay16-small.jpg 1000w, assets/cosplay16.jpg 2000w"
-                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('assets/cosplay17.jpg')">
                         <img src="assets/cosplay17.jpg" alt="Cosplay 17"
                         srcset="assets/cosplay17-small.jpg 500w, assets/cosplay17-small.jpg 1000w, assets/cosplay17.jpg 2000w"
-                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('assets/cosplay18.jpg')">
                         <img src="assets/cosplay18.jpg" alt="Cosplay 18"
                         srcset="assets/cosplay18-small.jpg 500w, assets/cosplay18-small.jpg 1000w, assets/cosplay18.jpg 2000w"
-                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('assets/cosplay19.jpg')">
                         <img src="assets/cosplay19.jpg" alt="Cosplay 19"
                         srcset="assets/cosplay19-small.jpg 500w, assets/cosplay19-small.jpg 1000w, assets/cosplay19.jpg 2000w"
-                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('assets/cosplay20.jpg')">
                         <img src="assets/cosplay20.jpg" alt="Cosplay 20"
                         srcset="assets/cosplay20-small.jpg 500w, assets/cosplay20-small.jpg 1000w, assets/cosplay20.jpg 2000w"
-                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('assets/cosplay21.jpg')">
                         <img src="assets/cosplay21.jpg" alt="Cosplay 21"
                         srcset="assets/cosplay21-small.jpg 500w, assets/cosplay21-small.jpg 1000w, assets/cosplay21.jpg 2000w"
-                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('assets/cosplay22.jpg')">
                         <img src="assets/cosplay22.jpg" alt="Cosplay 22"
                         srcset="assets/cosplay22-small.jpg 500w, assets/cosplay22-small.jpg 1000w, assets/cosplay22.jpg 2000w"
-                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy">
                     </div>
             
                 </div>
             </div>
             
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="openLightbox('assets/cosplay10.png')">
-                    <img src="assets/cosplay10.png" alt="Cosplay 10" loading="lazy">
+            <div class="gallery-grid-2">
+                <div class="gallery-item-2" onclick="openLightbox('assets/cosplay10.png')">
+                    <img src="assets/cosplay10.png" alt="Cosplay 10" 
+                    srcset="assets/cosplay10-small.png 500w, assets/cosplay10-small.png 1000w, assets/cosplay10.png 2000w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        loading="lazy">
                 </div>
-                <div class="gallery-item" onclick="openLightbox('assets/cosplay15.png')">
-                    <img src="assets/cosplay15.png" alt="Cosplay 11" loading="lazy">
+                <div class="gallery-item-2" onclick="openLightbox('assets/cosplay15.png')">
+                    <img src="assets/cosplay15.png" alt="Cosplay 11"
+                    srcset="assets/cosplay15-small.png 500w, assets/cosplay15-small.png 1000w, assets/cosplay15.png 2000w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy">
                 </div>
-                <div class="gallery-item" onclick="openLightbox('assets/cosplay12.png')">
-                    <img src="assets/cosplay12.png" alt="Cosplay 12" loading="lazy">
+                <div class="gallery-item-2 hide-on-laptop" onclick="openLightbox('assets/cosplay12.png')">
+                    <img src="assets/cosplay12.png" alt="Cosplay 12"
+                    srcset="assets/cosplay12-small.png 500w, assets/cosplay12-small.png 1000w, assets/cosplay12.png 2000w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy">
                 </div>
-                <div class="gallery-item" onclick="openLightbox('assets/cosplay13.png')">
-                    <img src="assets/cosplay13.png" alt="Cosplay 13" loading="lazy">
+                <div class="gallery-item-2" onclick="openLightbox('assets/cosplay13.png')">
+                    <img src="assets/cosplay13.png" alt="Cosplay 13" 
+                    srcset="assets/cosplay13-small.png 500w, assets/cosplay13-small.png 1000w, assets/cosplay13.png 2000w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    loading="lazy">
                 </div>
-                <div class="gallery-item" onclick="openLightbox('assets/cosplay14.png')">
-                    <img src="assets/cosplay14.png" alt="Cosplay 14" loading="lazy">
+                <div class="gallery-item-2" onclick="openLightbox('assets/cosplay14.png')">
+                    <img src="assets/cosplay14.png" alt="Cosplay 14"
+                    srcset="assets/cosplay14-small.png 500w, assets/cosplay14-small.png 1000w, assets/cosplay14.png 2000w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy">
                 </div>
             </div>
-            
     
         <div id="lightboxModal" class="lightbox">
             <!--span class="close" onclick="closeLightbox()">&times;</span-->
@@ -200,25 +239,20 @@
     
         
     </section>
-    <!--ul class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Pictures</a></li>
-        <li><a href="#">Summer 15</a></li>
-        <li>Italy</li>
-      </ul-->
+   
     
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="h2--contacts">Contact Us</h2>
-            <form id="contactForm" class="contact-form">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Message" required></textarea>
-                <button type="submit" class="cta-btn">Send Message</button>
-            </form>
-        </div>
-    </section>
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="h2--contacts">Contact Me</h2>
+                <form id="contactForm" class="contact-form">
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Message" required></textarea>
+                    <button type="submit" class="cta-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
 
 
     <div class="social-links">
